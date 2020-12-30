@@ -5,6 +5,8 @@ image_resource:
   type: docker-image
   source: {repository: busybox}
 
+inputs:
+  - name: task-scripts
+
 run:
-  path: echo
-  args: [hello world]
+  path: ./task_exec_python.sh
