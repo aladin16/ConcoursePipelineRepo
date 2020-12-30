@@ -20,9 +20,8 @@ jobs:
         trigger: true
       - get: aladin-repo
       - task: edit-file
-        run:
-          path: python3
-          args: [app.py]
+        file: aladin-repo/task_hello_world.yml
+
 
   - name: job-hello-world-night-time
     public: true
@@ -32,6 +31,5 @@ jobs:
         trigger: true
       - get: aladin-repo
       - task: edit-file-2
-        run:
-          path: python3
-          args: [app.py]
+        file: aladin-repo/task_hello_world.yml
+
