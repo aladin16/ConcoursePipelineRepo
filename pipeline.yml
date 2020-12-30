@@ -1,0 +1,42 @@
+---
+resources:
+  - name: resource-tutorial
+    type: git
+    source:
+      uri: https://github.com/starkandwayne/concourse-tutorial.git
+      branch: develop
+
+  - name: day-time
+    type: time
+    source:
+      start: 8:55 AM
+      stop: 9:15 AM
+      location: America/Montreal
+
+  - name: night-time
+    type: time
+    source:
+      start: 9:30 AM
+      stop: 3:00 PM
+      location: America/Montreal
+
+jobs:
+  - name: job-hello-world-day-time
+    public: true
+    serial: true
+    plan:
+      - get: day-time
+        trigger: true
+      - get: resource-tutorial
+      - task: hello-world
+        file: resource-tutorial/tutorials/basic/task-hello-world/task_hello_world.yml
+
+  - name: job-hello-world-night-time
+    public: true
+    serial: true
+    plan:
+      - get: night-time
+        trigger: true
+      - get: resource-tutorial
+      - task: hello-world
+        file: resource-tutorial/tutorials/basic/task-hello-world/task_hello_world.yml
