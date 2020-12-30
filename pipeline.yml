@@ -1,9 +1,9 @@
 ---
 resources:
-  - name: resource-tutorial
+  - name: aladin-repo
     type: git
     source:
-      uri: https://github.com/starkandwayne/concourse-tutorial.git
+      uri: https://github.com/aladin16/ConcoursePipelineRepo.git
       branch: develop
 
   - name: day-time
@@ -27,8 +27,8 @@ jobs:
     plan:
       - get: day-time
         trigger: true
-      - get: resource-tutorial
-      - task: hello-world
+      - get: aladin-repo
+      - task: edit file
         file: resource-tutorial/tutorials/basic/task-hello-world/task_hello_world.yml
 
   - name: job-hello-world-night-time
@@ -37,6 +37,6 @@ jobs:
     plan:
       - get: night-time
         trigger: true
-      - get: resource-tutorial
-      - task: hello-world
+      - get: aladin-repo
+      - task: edit file 2
         file: resource-tutorial/tutorials/basic/task-hello-world/task_hello_world.yml
