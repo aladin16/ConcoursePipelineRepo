@@ -24,14 +24,11 @@ jobs:
           platform: linux
           image_resource:
             type: docker-image
-            source: {repository: starkandwayne/concourse}
+            source: {repository: biowdl/pyyaml}
           inputs:
             - name: aladin-repo
-          outputs:
-            - name: aladin-repo-updated
           run:
-            path: resource-tutorial/tutorials/basic/publishing-outputs/bump-timestamp-file.sh
-
-
-
+            path: python3
+            args: ["./aladin-repo/app.py"]
+          
 

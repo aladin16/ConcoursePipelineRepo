@@ -3,7 +3,7 @@ import yaml
 import io
 
 # Read YAML file
-with open("test.yaml", 'r') as stream:
+with open("./aladin-repo/test.yaml", 'r') as stream:
     data = yaml.safe_load(stream)
 
 for key, value  in data.items():
