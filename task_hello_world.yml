@@ -6,7 +6,7 @@ image_resource:
   source: {repository: busybox}
 
 inputs:
-  - name: task_exec_python
+  - name: aladin-repo
 
 run:
-  path: ./task-scripts/task_exec_python.sh
+  path: task-scripts/task_exec_python.sh

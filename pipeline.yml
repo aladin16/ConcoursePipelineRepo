@@ -9,7 +9,7 @@ resources:
   - name: my-timer
     type: time
     source:
-      interval: 2m
+      interval: 1m
 
 jobs:
   - name: job-hello-world-day-time
@@ -20,16 +20,18 @@ jobs:
         trigger: true
       - get: aladin-repo
       - task: edit-file
-        file: aladin-repo/task_hello_world.yml
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: pypy}
+          inputs:
+            - name: aladin-repo
+          outputs:
+            - name: aladin-repo
+          run:
+            path: resource-tutorial/tutorials/basic/publishing-outputs/bump-timestamp-file.sh
 
 
-  - name: job-hello-world-night-time
-    public: true
-    serial: true
-    plan:
-      - get: my-timer
-        trigger: true
-      - get: aladin-repo
-      - task: edit-file-2
-        file: aladin-repo/task_hello_world.yml
+
 
